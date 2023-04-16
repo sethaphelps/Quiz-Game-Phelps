@@ -1,0 +1,81 @@
+:root {
+    /* --border1: solid 3px red; */
+    --border2: solid 5px black;
+    /* --border3: solid 3px green; */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    /* background: linear-gradient(to bottom, #393500 0%, #D5C545 85%, #F1F606 100%); */
+}
+
+/* Header */
+
+
+/* Main */
+.main {
+    display: flex;
+    border: var(--border1);
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 5rem;
+}
+
+.banner {
+    background-color: rgb(29, 29, 29);
+}
+
+.website-title {
+    text-align: center;
+    font-size: 60px;
+    padding: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    -webkit-text-stroke: 2px #ffeb3b;
+}
+
+.start-button {
+    text-align: center;
+}
+.header-imgs 
+
+#spotlight-right {
+    max-width: 150px;
+    max-height: 150px;
+    
+}
+
+#spotlight-left {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.main__section {
+    display: inline-block;
+    border: var(--border2);
+    width: 40%;
+    min-height: 5rem;
+    margin: 0 2rem;
+    background-color: crimson;
+}
+
+.main__section--right {
+    height: 25vh;
+    background-color: crimson;
+}
+
+.hidden {
+    display: none;
+}
+
+.newPEl {
+    background-color: black;
+    color: white;
+    height: 50px;
+    width: 100%;
+}
