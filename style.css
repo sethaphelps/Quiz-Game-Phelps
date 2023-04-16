@@ -12,9 +12,8 @@
 
 body {
     min-height: 100vh;
-    /* background: linear-gradient(to bottom, #393500 0%, #D5C545 85%, #F1F606 100%); */
+    background: linear-gradient(to bottom, #dd0b0b 0%, #bb4545 85%, #e08181 100%);
 }
-
 /* Header */
 
 
@@ -29,53 +28,85 @@ body {
 
 .banner {
     background-color: rgb(29, 29, 29);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .website-title {
     text-align: center;
     font-size: 60px;
-    padding: 40px;
+    padding: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    -webkit-text-stroke: 2px #ffeb3b;
+    -webkit-text-stroke: 2px white;
+    width: 100%;
 }
 
 .start-button {
+    display: flex;
+    color: black;
+    background-color: white;
+    border-radius: 5px color black;
+    font-size: 1.5em;
     text-align: center;
+    margin: 15px;
+    padding: 10px 25px;
 }
-.header-imgs 
+
+/* .header-imgs {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+
+}
 
 #spotlight-right {
     max-width: 150px;
     max-height: 150px;
+    justify-self: flex-end;
     
 }
 
 #spotlight-left {
     max-width: 150px;
     max-height: 150px;
-}
+    justify-self: flex-start;
+} */
 
 .main__section {
     display: inline-block;
     border: var(--border2);
-    width: 40%;
+    width: 55vw;
     min-height: 5rem;
     margin: 0 2rem;
-    background-color: crimson;
+    background-color: white;
+}
+
+.question__container {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .main__section--right {
-    height: 25vh;
-    background-color: crimson;
+    height: 525px;
+    width: 30vw;
+    background-color: white;
 }
 
-.hidden {
+.timer {
+    height: 200px;
+    border: 5px solid black;
+    text-align: center;
+}
+
+/* .hidden {
     display: none;
-}
+} */
 
-.newPEl {
+/* .newPEl {
     background-color: black;
     color: white;
     height: 50px;
     width: 100%;
-}
+} */
