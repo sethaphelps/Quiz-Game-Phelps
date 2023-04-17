@@ -1,5 +1,4 @@
 var startBtn = document.getElementById("start-button");
-var pEl = document.querySelector("p.hidden");
 var sectionLeft = document.getElementById("section-left");
 var answerBtnArray = document.querySelectorAll(".answerBtn");
 var buttonContainer = document.getElementById("buttonContainer");
@@ -100,6 +99,15 @@ var triviaQuestions = [
   },
 ];
 
+// start button calls this function
+function startGame() {
+  win = false;
+  timerCount = 30;
+  mainContainer.setAttribute("style", "display: block");
+  showNextQuestion();
+}
+
+// function to bring up question to user
 function showNextQuestion() {
   questions.textContent = triviaQuestions[currQuestionIndex].question;
   for (var i = 0; i < 4; i++) {
@@ -108,43 +116,27 @@ function showNextQuestion() {
   }
 }
 
+// function to determine if user selected correct answer
 function gradeUserChoice(event) {
   if (event.target.matches("button")) {
     console.log("event.target.textContent is", event.target.textContent);
+    winCounter++
     // check if the user selected right
     // run the winGame function
     // else run the lossGame function
     // in either case
+  } else {
+    timerCount -=3
   }
 
-  // if the target of the vent was not a butotn, don't do anything.
+  // if the target of the event was not a button, don't do anything.
   // ...
 }
+
 // function is called when page loads
 function init() {
   getWins();
   getLosses();
-}
-
-// start button calls this function
-
-function startGame() {
-  win = false;
-  timerCount = 30;
-  mainContainer.setAttribute("style", "display: block");
-  showNextQuestion();
-}
-
-// Function when answer is correct
-function winGame() {
-  winCounter++;
-  //   setWins();
-}
-
-// Function when answer is incorrect
-function loseGame() {
-  lossCounter++;
-  setLosses();
 }
 
 // Function to start and stop timer
@@ -152,28 +144,17 @@ function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
-    // if (timerCount >= 0) {
-    //   if (isWin && timerCount > 0) {
-    //     // clearInterval(timer);
-    //     winGame();
-    //   }
-    // }
-    if (timerCount <= 0) {
+    if (timerCount >= 0) {
+      if (isWin && timerCount > 0) {
+        // clearInterval(timer);
+        winGame();
+      }
+    }
+    if (timerCount >= 0) {
       clearInterval(timer);
       loseGame();
     }
   }, 1000);
-}
-
-function myCallbackFunction() {
-  console.log("callback ran!");
-  // document.getElementById('section-left').replaceChildren();
-  //pEl.classList.remove('hidden');
-  var myNewPEl = document.createElement("p");
-  myNewPEl.classList.add("newPEl");
-  myNewPEl.textContent = "Hello, World!";
-  myNewPEl.setAttribute("id", "1234");
-  sectionLeft.append(myNewPEl);
 }
 
 startBtn.addEventListener("click", startGame);
