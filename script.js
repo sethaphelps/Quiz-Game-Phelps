@@ -102,7 +102,7 @@ var triviaQuestions = [
 // start button calls this function
 function startGame() {
   win = false;
-  timerCount = 30;
+  timerCount = 60;
   mainContainer.setAttribute("style", "display: block");
   showNextQuestion();
 }
@@ -118,19 +118,28 @@ function showNextQuestion() {
 
 // function to determine if user selected correct answer
 function gradeUserChoice(event) {
-  if (event.target.matches("button")) {
+  if (event.target.matches(".answerBtn")) {
     console.log("event.target.textContent is", event.target.textContent);
-    winCounter++
-    // check if the user selected right
-    // run the winGame function
-    // else run the lossGame function
-    // in either case
-  } else {
-    timerCount -=3
-  }
+    var isCorrect = event.target.textContent === triviaQuestions[currQuestionIndex].answer;
+    console.log(isCorrect)
+    if (isCorrect){
+        winCounter++
+    } else {
+        timerCount -=5
+    }
+    } 
+    currQuestionIndex++
+    showNextQuestion()
+}
 
-  // if the target of the event was not a button, don't do anything.
-  // ...
+function winGame() {
+  winCounter++
+  setWins()
+}
+
+function loseGame() {
+  loseCounter++
+  setLosses()
 }
 
 // function is called when page loads
@@ -139,24 +148,29 @@ function init() {
   getLosses();
 }
 
-// Function to start and stop timer
+// function to start and stop timer
 function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
-    if (timerCount >= 0) {
-      if (isWin && timerCount > 0) {
-        // clearInterval(timer);
-        winGame();
-      }
-    }
-    if (timerCount >= 0) {
+    if (timerCount <= 0) {
       clearInterval(timer);
       loseGame();
     }
   }, 1000);
 }
 
+var resetButton = document.querySelector(".reset-button");
+
+function resetGame() {
+  winCounter = 0;
+  loseCounter = 0;
+  setWins()
+  setLosses()
+}
+
 startBtn.addEventListener("click", startGame);
 startBtn.addEventListener("click", startTimer);
 buttonContainer.addEventListener("click", gradeUserChoice);
+resetButton.addEventListener("click", resetGame);
+
