@@ -105,6 +105,9 @@ function startGame() {
   timerCount = 60;
   mainContainer.setAttribute("style", "display: block");
   showNextQuestion();
+  var directions = document.getElementById("directions");
+  directions.style.display = "none";
+  startBtn.disabled = true;
 }
 
 // function to bring up question to user
@@ -120,26 +123,17 @@ function showNextQuestion() {
 function gradeUserChoice(event) {
   if (event.target.matches(".answerBtn")) {
     console.log("event.target.textContent is", event.target.textContent);
-    var isCorrect = event.target.textContent === triviaQuestions[currQuestionIndex].answer;
-    console.log(isCorrect)
-    if (isCorrect){
-        winCounter++
+    var isCorrect =
+      event.target.textContent === triviaQuestions[currQuestionIndex].answer;
+    console.log(isCorrect);
+    if (isCorrect) {
+      winCounter++;
     } else {
-        timerCount -=5
+      timerCount -= 5;
     }
-    } 
-    currQuestionIndex++
-    showNextQuestion()
-}
-
-function winGame() {
-  winCounter++
-  setWins()
-}
-
-function loseGame() {
-  loseCounter++
-  setLosses()
+  }
+  currQuestionIndex++;
+  showNextQuestion();
 }
 
 // function is called when page loads
@@ -160,17 +154,7 @@ function startTimer() {
   }, 1000);
 }
 
-var resetButton = document.querySelector(".reset-button");
-
-function resetGame() {
-  winCounter = 0;
-  loseCounter = 0;
-  setWins()
-  setLosses()
-}
-
 startBtn.addEventListener("click", startGame);
 startBtn.addEventListener("click", startTimer);
 buttonContainer.addEventListener("click", gradeUserChoice);
 resetButton.addEventListener("click", resetGame);
-
