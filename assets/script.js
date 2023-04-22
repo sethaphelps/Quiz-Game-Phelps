@@ -102,7 +102,7 @@ var triviaQuestions = [
 // start button calls this function
 function startGame() {
   win = false;
-  timerCount = 60;
+  timerCount = 30;
   mainContainer.setAttribute("style", "display: block");
   showNextQuestion();
   var directions = document.getElementById("directions");
@@ -130,6 +130,9 @@ function gradeUserChoice(event) {
       winCounter++;
     } else {
       timerCount -= 5;
+      if (timerCount < 0 ) {
+        timerCount = 0;
+      }
     }
   }
   currQuestionIndex++;
@@ -149,9 +152,16 @@ function startTimer() {
     timerElement.textContent = timerCount;
     if (timerCount <= 0) {
       clearInterval(timer);
-      loseGame();
+      endQuiz();
     }
   }, 1000);
+}
+
+function endQuiz() {
+  var final = document.querySelector(".trivia");
+  final.classList.add("hide");
+  var submit = document.getElementById("endQuiz");
+  submit.classList.remove("hide")
 }
 
 startBtn.addEventListener("click", startGame);
