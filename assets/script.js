@@ -5,9 +5,12 @@ var buttonContainer = document.getElementById("buttonContainer");
 var questions = document.getElementById("questions");
 var mainContainer = document.querySelector(".trivia");
 var timerElement = document.getElementById("timer-count");
+var scoreEl = document.getElementById("score");
+var resetButton = document.getElementById("reset-button")
 
-var winCounter = 0;
-var lossCounter = 0;
+var score = 0;
+
+var win = false;
 
 var timer;
 var timerCount;
@@ -101,9 +104,8 @@ var triviaQuestions = [
 
 // start button calls this function
 function startGame() {
-  win = false;
   timerCount = 30;
-  mainContainer.setAttribute("style", "display: block");
+  mainContainer.removeAttribute("hidden");
   showNextQuestion();
   var directions = document.getElementById("directions");
   directions.style.display = "none";
@@ -127,9 +129,10 @@ function gradeUserChoice(event) {
       event.target.textContent === triviaQuestions[currQuestionIndex].answer;
     console.log(isCorrect);
     if (isCorrect) {
-      winCounter++;
+      score++;
+      scoreEl.textContent = score
     } else {
-      timerCount -= 5;
+      timerCount -= 3;
       if (timerCount < 0 ) {
         timerCount = 0;
       }
@@ -155,6 +158,11 @@ function startTimer() {
       endQuiz();
     }
   }, 1000);
+}
+
+function resetGame() {
+  scoreEl.textContent = 0
+  score = 0
 }
 
 function endQuiz() {

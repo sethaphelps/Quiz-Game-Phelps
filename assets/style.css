@@ -12,11 +12,10 @@ body {
 
 
 /* Main */
-.main {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    padding: 5rem;
+main {
+    display: inline-flex;
+    height: 60vh;
+    background-color: yellow;
 }
 
 .banner {
@@ -36,7 +35,6 @@ body {
 }
 
 #start-button {
-    display: flex;
     color: black;
     background-color: white;
     border-radius: 8px;
@@ -47,13 +45,14 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.main__section {
-    display: inline-block;
+section {
+    display: flex;
     border: var(--border2);
-    width: 55vw;
-    min-height: 5rem;
-    margin: 0 2rem;
+    margin: 10px 10px;
+    padding: 5px 5px 5px 5px;
     background-color: white;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Trivia Question Box */
@@ -64,8 +63,11 @@ body {
     margin-top: 10rem;
 }
 
-.main__section--left {
+.left {
+    justify-content: flex-start;
+    width: 65vw;
     border-radius: 25px;
+    
 }
 
 .question__container {
@@ -94,9 +96,9 @@ body {
 
 /* Timer and Score Box */
 
-.main__section--right {
-    height: 525px;
-    width: 30vw;
+.right {
+    justify-content: flex-end;
+    width: 25vw;
     background-color: white;
     border-radius: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -111,22 +113,33 @@ body {
 .timer-count {
     font-size: 40px;
 }
-.reset-button {
-    display: flex;
+
+#reset-button {
     color: black;
     background-color: rgb(255, 255, 255);
     border-radius: 8px;
     font-size: 1.5em;
     text-align: center;
-    margin-top: 50px;
-    margin-left: 425px;
     padding: 10px 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .scoreboard {
     text-align: center;
-    margin-top: 2.5em;
     font-size: 25px;
 }
 
+#name {
+   font-size: 25px; 
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#submitBtn {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
